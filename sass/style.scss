@@ -1,0 +1,21 @@
+//? @import
+// import tailwindcss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @import abstracts folder
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+// @import components folder
+
+// @import bass folder
+@import "base/animations";
+@import "base/typography";
+@import "base/base";
+@import "base/utilities";
+
+// @import pages folder
+@import "pages/home";
