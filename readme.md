@@ -61,3 +61,9 @@ gl💪
 - : and test your project and feedback in people
 - : you need call for client 1 or 2 times in the week
 - : run build-css if you finish project
+
+loading screen
+search auto compelected
+archive
+save archive
+weather city with img

@@ -4,7 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/index.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/f95e235059.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Weather</title>
   </head>
-  <body class="body h-screen w-screen bg-gray-400"></body>
+  <body
+    class="body h-full w-full bg-gradient-to-r from-white to-gray-400 flex flex-col mx-auto items-center justify-start my-12 gap-4"
+  >
+    <header class="input">
+      <div class="box flex items-center gap-6 relative">
+        <input
+          type="text"
+          name="input"
+          id="input"
+          class="bg-primaryColor/60 text-center rounded-xl py-3 px-4 w-[40rem] outline-none border-none text-white font-normal text-5xl font-sans transition-all focus:rounded-b-none peer shadow-sm"
+        />
+        <i
+          class="fa-solid fa-magnifying-glass text-primaryColor text-5xl cursor-pointer"
+        ></i>
+        <div
+          class="sugg absolute w-[40rem] top-full left-0 flex flex-col items-center text-center text-3xl p-4 peer-focus:scale-y-100 scale-y-0 origin-top bg-primaryColor/50 rounded-xl transition-all rounded-t-none shadow-sm z-10"
+        >
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="cards">
+      <div class="lds-ellipssi !hidden">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </section>
+  </body>
 </html>
