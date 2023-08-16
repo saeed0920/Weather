@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@maptiler/geocoding-control": "^0.0.98",
+    "@material-tailwind/html": "^2.0.0",
     "live-server": "^1.2.2",
     "maplibre-gl": "^3.2.2",
     "update-json": "^1.0.1"
