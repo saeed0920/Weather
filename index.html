@@ -34,7 +34,7 @@
         >
           <input
             type="text"
-            class="text-center w-[30rem] font-normal text-3xl p-2 outline-none shadow-sm rounded-lg bg-transparent text-white border-none transition-all"
+            class="text-center w-[30rem] font-normal text-3xl p-2 outline-none shadow-sm rounded-lg bg-transparent text-white border-none transition-all peer"
             placeholder="Search here!"
             id="input"
           />
@@ -43,7 +43,7 @@
             class="fa-solid fa-magnifying-glass text-gray-400 text-3xl cursor-pointer hover:text-white transition-all"
           ></i>
           <div
-            class="sugg absolute top-[105%] left-0 text-start text-gray-400 text-2xl w-full border-none p-2 py-4 rounded-md bg-[#0f1321] scale-y-0 origin-top transition-all flex flex-col gap-2"
+            class="sugg absolute top-[105%] left-0 text-start text-gray-400 text-2xl w-full border-none p-2 py-4 rounded-md bg-[#0f1321] scale-y-0 origin-top transition-all flex-col gap-2 flex"
           >
             <div class="sugg__loading self-center">
               <div class="lds-ellipsis">
@@ -57,8 +57,29 @@
         </div>
       </section>
 
-      <section class="p-12">
-        <h1 class="text-center text-5xl font-bold text-gray-800">Archive</h1>
+      <section class="p-12 grid grid-cols-1 grid-rows-[10rem,1fr]">
+        <header class="flex flex-col justify-center">
+          <h1 class="text-center text-5xl font-bold text-gray-800">Archive</h1>
+          <button
+            class="text-red-500 text-xl border-2 p-2 rounded-lg shadow-sm hover:text-red-800 transition-all self-end font-bold"
+            id="removeArchive"
+          >
+            Remove
+          </button>
+        </header>
+
+        <div class="container flex flex-col gap-2 overflow-y-auto relative">
+          <div
+            class="mainLoading self-center my-auto absolute z-10 w-full h-full grid place-items-center bg-white"
+          >
+            <div class="lds-ellipsis [&>*]:!bg-primaryColor">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </body>

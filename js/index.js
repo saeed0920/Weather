@@ -24,16 +24,15 @@ const input = selectElement("#input");
 const sugg = selectElement(".sugg");
 const suggLoading = selectElement(".sugg__loading");
 const searchIcon = selectElement("#icon");
-let checkInput = true;
+const mainUrl = "http://api.weatherapi.com/v1";
+const apiKey = "dbc6887461184c36a7b95357232008";
 // function
 
 const autoComOpen = async function () {
   removeClass(sugg, "scale-y-0");
   removeClass(suggLoading, "hide");
-  checkInput = false;
   //
-  const apiKey = "3wFMzAKfdShvZA0kXCcjf5IMFo01jrMe";
-  let url = `http://geodb-free-service.wirefreethought.com/v1/geo/places?limit=5&offset=0&types=CITY&namePrefix=${input.value}&sort=-population`;
+  let url = `${mainUrl}/search.json?key=${apiKey}&q=${input.value.trim()}`;
 
   try {
     const response = await fetch(url, {
@@ -44,15 +43,16 @@ const autoComOpen = async function () {
       },
     });
     let result = await response.json();
-    result = result.data;
-    console.log("Success:", result);
-    checkInput = true;
+    console.log(result);
     removeElement(".autoCom");
     for (let i = 0; i < 5; i++) {
       if (result[i]) {
         const para = document.createElement("p");
         addClass(para, "autoCom");
-        const node = document.createTextNode(result[i].name);
+        const node = document.createTextNode(
+          result[i].name + " " + result[i].region
+        );
+        para.setAttribute("id", result[i].url);
         para.appendChild(node);
         sugg.appendChild(para);
       } else break;
@@ -74,11 +74,96 @@ const autoComClose = function () {
   //
 };
 
-const getWeather = function () {};
+const getWeather = async function (value, setupCondition = true) {
+  value ? (value = value) : (value = input.value.trim());
+  const urlImg = await getProfileImg(value);
+  value = value.toLocaleLowerCase();
+  let url = `${mainUrl}/current.json?key=${apiKey}&q=${value}`;
+
+  let check = true;
+
+  if (setupCondition)
+    for (let i = 1; i <= localStorage.length; i++) {
+      if (localStorage.getItem(i)?.toLocaleLowerCase() == value) {
+        check = false;
+      }
+    }
+
+  if (setupCondition)
+    if (check) localStorage.setItem(localStorage.length + 1, value);
+
+  if (check)
+    try {
+      const response = await fetch(url, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      let result = await response.json();
+      console.log("weather: ", result);
+
+      let conditionText;
+      switch (result.current.condition.text) {
+        case "Clear":
+          conditionText = "blueBg";
+          break;
+        case "Sunny":
+          conditionText = "blueBg";
+          break;
+        case "Partly cloudy":
+          conditionText = "greenBg";
+          break;
+        case "Cloudy":
+          conditionText = "greenBg";
+          break;
+        case "Rain":
+          conditionText = "epicBg";
+          break;
+        case "Freezing rain":
+          conditionText = "epicBg";
+          break;
+      }
+
+      selectElement(".container").innerHTML += `
+    <div class="card ${conditionText}">
+    <img src="${urlImg}" />
+     <div class="header">
+        <h2>${result.current.condition.text}</h2>
+        <h1>${result.current.temp_c | 0}&#186;</h1>
+        <div>
+        <h3>${result.current.last_updated}</h3>
+        <h3>${result.location.country + "," + result.location.name}</h3>
+        </div>
+      </div>
+      <img src="${result.current.condition.icon}"  />
+   </div>`;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  input.value = null;
+};
+
+const getProfileImg = async function (name) {
+  name = name.toLocaleLowerCase();
+  try {
+    let url = `https://api.teleport.org/api/urban_areas/slug:${name}/images/`;
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let result = await response.json();
+    console.log("img :", result);
+    return result.photos[0].image.web;
+  } catch (error) {
+    console.error("Error:", error);
+    return "./img/city.jpg";
+  }
+};
 
 // event
 input.addEventListener("input", function () {
-  if (input.value.length > 1 && checkInput) {
+  if (input.value.length > 1) {
     removeElement(".autoCom");
     autoComOpen();
   }
@@ -89,7 +174,7 @@ searchIcon.addEventListener("click", function () {
   getWeather();
 });
 
-input.addEventListener("keypress", function (e) {
+input.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     autoComClose();
     getWeather();
@@ -98,6 +183,26 @@ input.addEventListener("keypress", function (e) {
 
 sugg.addEventListener("click", function (e) {
   input.value = e.srcElement.textContent;
+
   autoComClose();
-  getWeather();
+  getWeather(e.srcElement.id);
 });
+
+selectElement("#removeArchive").addEventListener("click", function () {
+  localStorage.clear();
+  location.reload();
+});
+
+for (let i = 0; i <= localStorage.length; i++) {
+  localStorage.getItem(i);
+}
+
+// setup page (archive)
+const setup = async function () {
+  for (let i = 1; i <= localStorage.length; i++) {
+    let item = localStorage.getItem(i);
+    await getWeather(item, false);
+  }
+  addClass(selectElement(".mainLoading"), "hide");
+};
+setup();

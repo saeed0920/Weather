@@ -80,6 +80,63 @@ big-desktop
   .autoCom:hover {
     color: white; }
 
+.card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden; }
+  .card img:first-of-type {
+    width: 12rem;
+    height: 10rem;
+    background-size: cover;
+    object-fit: cover;
+    background-position: center; }
+  .card img:last-of-type {
+    width: 10rem;
+    object-fit: cover;
+    margin-left: auto; }
+  .card .header {
+    display: grid;
+    grid-template-columns: 12rem max-content;
+    grid-template-rows: max-content 1fr;
+    justify-items: start;
+    align-items: center;
+    padding: 0.5rem;
+    font-family: "Poppins"; }
+    .card .header h2 {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+      font-weight: 600;
+      font-size: 1.8rem; }
+    .card .header h1 {
+      font-weight: 700;
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+      font-size: 4.2rem;
+      font-weight: 500;
+      padding: 0 1rem;
+      border-right: 1px solid white;
+      justify-self: stretch; }
+    .card .header div {
+      display: flex;
+      justify-content: start;
+      flex-direction: column;
+      padding: 0 1rem;
+      grid-row: 2 / 3;
+      grid-column: 2 / 3; }
+
+.blueBg {
+  @apply bg-gradient-to-r from-cyan-500 to-blue-500; }
+
+.greenBg {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600; }
+
+.epicBg {
+  @apply bg-gradient-to-r from-green-700 to-green-400; }
+
 *,
 *::after,
 *::before {
