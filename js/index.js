@@ -24,7 +24,7 @@ const input = selectElement("#input");
 const sugg = selectElement(".sugg");
 const suggLoading = selectElement(".sugg__loading");
 const searchIcon = selectElement("#icon");
-const mainUrl = "http://api.weatherapi.com/v1";
+const mainUrl = "https://api.weatherapi.com/v1";
 const apiKey = "dbc6887461184c36a7b95357232008";
 // function
 
