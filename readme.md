@@ -22,32 +22,6 @@ in your cmd and
 
 ```
 
-gl💪
-
-# some step for start and building in project
-
-```
-#1 : who is the used in project?
-```
-
-#2 : what your personal goal?
-
-```
-#3 : git your self deadline!
-```
-
-#4 : focus on MVP!
-
-```
-#5 : focus one thing at time!
-```
-
-#6 : don't be afraid to ask for help and to follow tutorials!!!
-
-```
-#7 : which stuf to use?? and which pags build frist ?
-```
-
 # some tips and helps for plan...
 
 - : ready img and fonts style ...
