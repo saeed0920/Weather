@@ -26,6 +26,12 @@ const suggLoading = selectElement(".sugg__loading");
 const searchIcon = selectElement("#icon");
 const mainUrl = "https://api.weatherapi.com/v1";
 const apiKey = "dbc6887461184c36a7b95357232008";
+
+// setup
+if (localStorage.getItem.length < 1) {
+  addClass(selectElement("#removeArchive"), "hide");
+}
+
 // function
 
 const autoComOpen = async function () {
@@ -43,7 +49,6 @@ const autoComOpen = async function () {
       },
     });
     let result = await response.json();
-    console.log(result);
     removeElement(".autoCom");
     for (let i = 0; i < 5; i++) {
       if (result[i]) {
@@ -79,7 +84,6 @@ const getWeather = async function (value, setupCondition = true) {
   const urlImg = await getProfileImg(value);
   value = value.toLocaleLowerCase();
   let url = `${mainUrl}/current.json?key=${apiKey}&q=${value}`;
-
   let check = true;
 
   if (setupCondition)
@@ -91,15 +95,13 @@ const getWeather = async function (value, setupCondition = true) {
 
   if (setupCondition)
     if (check) localStorage.setItem(localStorage.length + 1, value);
-
   if (check)
     try {
       const response = await fetch(url, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: {},
       });
-      let result = await response.json();
+
+      let result = response.json();
       console.log("weather: ", result);
 
       let conditionText;
@@ -145,18 +147,19 @@ const getWeather = async function (value, setupCondition = true) {
 
 const getProfileImg = async function (name) {
   name = name.toLocaleLowerCase();
+
+  let url = `https://api.teleport.org/api/urban_areas/slug:${name}/images/`;
   try {
-    let url = `https://api.teleport.org/api/urban_areas/slug:${name}/images/`;
     const response = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    let result = await response.json();
+    let result = response.json();
     console.log("img :", result);
     return result.photos[0].image.web;
   } catch (error) {
-    console.error("Error:", error);
+    console.log(error);
     return "./img/city.jpg";
   }
 };
