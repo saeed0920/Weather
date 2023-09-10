@@ -101,7 +101,7 @@ const getWeather = async function (value, setupCondition = true) {
         headers: {},
       });
 
-      let result = response.json();
+      let result = await response.json();
       console.log("weather: ", result);
 
       let conditionText;
@@ -121,10 +121,20 @@ const getWeather = async function (value, setupCondition = true) {
         case "Rain":
           conditionText = "epicBg";
           break;
+        case "Overcast":
+          conditionText = "epicBg";
+          break;
+        case "Light rain":
+          conditionText = "epicBg";
+          break;
         case "Freezing rain":
           conditionText = "epicBg";
           break;
+        default:
+          conditionText = "blueBg";
+          break;
       }
+      console.log("condition text : ", conditionText);
 
       selectElement(".container").innerHTML += `
     <div class="card ${conditionText}">
@@ -155,7 +165,7 @@ const getProfileImg = async function (name) {
         "Content-Type": "application/json",
       },
     });
-    let result = response.json();
+    let result = await response.json();
     console.log("img :", result);
     return result.photos[0].image.web;
   } catch (error) {

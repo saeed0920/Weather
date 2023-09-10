@@ -17,13 +17,13 @@ body {
   gap: 1rem;
   color: white;
   border-radius: 10px;
-  overflow: hidden;
+
   img:first-of-type {
     width: 12rem;
-    height: 10rem;
+    height: 100%;
     background-size: cover;
     object-fit: cover;
-    background-position: center;
+    object-position: right;
   }
 
   img:last-of-type {
@@ -34,7 +34,7 @@ body {
 
   .header {
     display: grid;
-    grid-template-columns: 12rem max-content;
+    grid-template-columns: 12rem 14rem;
     grid-template-rows: max-content 1fr;
     justify-items: start;
     align-items: center;
@@ -56,6 +56,10 @@ body {
       border-right: 1px solid white;
       justify-self: stretch;
     }
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
     div {
       display: flex;
       justify-content: start;
@@ -66,14 +70,15 @@ body {
     }
   }
 }
+
 .blueBg {
   @apply bg-gradient-to-r from-cyan-500 to-blue-500;
 }
 
-.greenBg {
+.epicBg {
   @apply bg-gradient-to-r from-blue-600 to-purple-600;
 }
 
-.epicBg {
+.greenBg {
   @apply bg-gradient-to-r from-green-700 to-green-400;
 }

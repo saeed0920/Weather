@@ -21,16 +21,16 @@
     class="body h-screen w-screen bg-gradient-to-r from-white to-gray-400 grid place-items-center"
   >
     <main
-      class="w-[90%] h-[90%] bg-white rounded-md shadow-lg grid grid-cols-2 overflow-hidden"
+      class="w-[90%] h-[90%] bg-white rounded-md shadow-lg grid grid-cols-2 overflow-hidden 1200:h-[95%] 1200:w-[95%] 1200:grid-cols-[3fr,4fr] 800:flex 800:flex-col 800:relative 800:gap-4 800:!h-full 800:!w-full"
     >
       <section class="grid grid-rows-1 grid-cols-1">
         <img
           src="./img/home.jpg"
           alt="earth"
-          class="h-full object-cover row-start-1 col-start-1"
+          class="h-full object-cover row-start-1 col-start-1 800:absolute 800:w-full 800:h-full"
         />
         <div
-          class="box flex items-center justify-center row-start-1 col-start-1 h-20 justify-self-center mt-20 gap-4 relative border-gray-400 rounded-lg border-2 w-[40rem]"
+          class="box flex items-center justify-center row-start-1 col-start-1 h-20 justify-self-center mt-20 gap-4 relative border-gray-400 rounded-lg border-2 w-[40rem] 800:w-[60%] 800:h-30"
         >
           <input
             type="text"
@@ -57,7 +57,7 @@
         </div>
       </section>
 
-      <section class="p-12 grid grid-cols-1 grid-rows-[10rem,1fr]">
+      <section class="p-12 grid grid-cols-1 grid-rows-[10rem,1fr] 1200:p-8">
         <header class="flex flex-col justify-center">
           <h1 class="text-center text-5xl font-bold text-gray-800">Archive</h1>
           <button
@@ -68,7 +68,9 @@
           </button>
         </header>
 
-        <div class="container flex flex-col gap-2 overflow-y-auto relative">
+        <div
+          class="container flex flex-col gap-4 relative max-[1500px]:max-h-[60%] max-h-[75%] overflow-auto w-full rounded-md pr-2 1000:max-h-[95%] bg-transparent 800:gap-6"
+        >
           <div
             class="mainLoading self-center my-auto absolute z-10 w-full h-full grid place-items-center bg-white"
           >
