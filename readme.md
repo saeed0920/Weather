@@ -36,10 +36,13 @@ in your cmd and
 - : you need call for client 1 or 2 times in the week
 - : run build-css if you finish project
 
-loading screen
-search auto compelected
-archive
-save archive
-weather city with img
+loading screen ///
+search auto compelected ///
+archive ///
+save archive ///
+weather city with img ///
+set error when use search wrong city
+fix contaienr without class\_\_contaienr
+and fix loading-sugg and hide item with loading load in responsive
 
 [Live](https://saeed0920.github.io/Weather/)
