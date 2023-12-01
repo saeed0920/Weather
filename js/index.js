@@ -28,7 +28,7 @@ const mainUrl = "https://api.weatherapi.com/v1";
 const apiKey = "dbc6887461184c36a7b95357232008";
 
 // setup
-if (localStorage.getItem.length < 1) {
+if (localStorage.length < 1) {
   addClass(selectElement("#removeArchive"), "hide");
 }
 
@@ -102,7 +102,6 @@ const getWeather = async function (value, setupCondition = true) {
       });
 
       let result = await response.json();
-      console.log("weather: ", result);
 
       let conditionText;
       switch (result.current.condition.text) {
@@ -134,7 +133,6 @@ const getWeather = async function (value, setupCondition = true) {
           conditionText = "blueBg";
           break;
       }
-      console.log("condition text : ", conditionText);
 
       selectElement(".container").innerHTML += `
     <div class="card ${conditionText}">
@@ -152,6 +150,8 @@ const getWeather = async function (value, setupCondition = true) {
     } catch (error) {
       console.error("Error:", error);
     }
+  if (localStorage.length > 0)
+    removeClass(selectElement("#removeArchive"), "hide");
   input.value = null;
 };
 
@@ -166,10 +166,9 @@ const getProfileImg = async function (name) {
       },
     });
     let result = await response.json();
-    console.log("img :", result);
     return result.photos[0].image.web;
   } catch (error) {
-    console.log(error);
+    console.warn(error);
     return "./img/city.jpg";
   }
 };

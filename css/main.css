@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap");
 
 /*
-! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -633,10 +633,6 @@ video {
   height: 100vh;
 }
 
-.max-h-\[80\%\]{
-  max-height: 80%;
-}
-
 .max-h-\[75\%\]{
   max-height: 75%;
 }
@@ -991,6 +987,7 @@ big-desktop
   gap: 1rem;
   color: white;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .card img:first-of-type {
@@ -1021,15 +1018,15 @@ big-desktop
 }
 
 .card .header h2 {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
+  grid-row: 1/2;
+  grid-column: 1/2;
   font-weight: 600;
   font-size: 1.8rem;
 }
 
 .card .header h1 {
-  grid-row: 2 / 3;
-  grid-column: 1 / 2;
+  grid-row: 2/3;
+  grid-column: 1/2;
   font-size: 4.2rem;
   font-weight: 500;
   padding: 0 1rem;
@@ -1047,8 +1044,8 @@ big-desktop
   justify-content: start;
   flex-direction: column;
   padding: 0 1rem;
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
+  grid-row: 2/3;
+  grid-column: 2/3;
 }
 
 .blueBg{
@@ -1169,36 +1166,16 @@ body {
     height: 100%;
   }
 
-  .\38 00\:h-40{
-    height: 10rem;
-  }
-
   .\38 00\:\!w-full{
     width: 100% !important;
   }
 
-  .\38 00\:w-full{
-    width: 100%;
-  }
-
-  .\38 00\:w-\[50rem\]{
-    width: 50rem;
-  }
-
-  .\38 00\:w-80{
-    width: 20rem;
-  }
-
-  .\38 00\:w-1\/2{
-    width: 50%;
-  }
-
-  .\38 00\:w-\[80\%\]{
-    width: 80%;
-  }
-
   .\38 00\:w-\[60\%\]{
     width: 60%;
+  }
+
+  .\38 00\:w-full{
+    width: 100%;
   }
 
   .\38 00\:flex-col{
@@ -1207,10 +1184,6 @@ body {
 
   .\38 00\:gap-4{
     gap: 1rem;
-  }
-
-  .\38 00\:gap-8{
-    gap: 2rem;
   }
 
   .\38 00\:gap-6{
@@ -1246,3 +1219,5 @@ body {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(155 89 182 / var(--tw-bg-opacity)) !important;
 }
+
+/*# sourceMappingURL=main.css.map */

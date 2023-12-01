@@ -4,10 +4,10 @@
   "description": "Fill",
   "main": "index.js",
   "scripts": {
-    "watch-sass": "node-sass sass/style.scss css/style.css -w",
+    "start": "npm-run-all --parallel live-server watch-sass2 watch-tailwind",
+    "watch-sass": "sass --watch sass/style.scss:css/style.css",
     "live-server": "live-server",
     "watch-tailwind": "npx tailwindcss -i ./css/style.css -o ./css/main.css --watch",
-    "start": "npm-run-all --parallel live-server watch-sass watch-tailwind",
     "compile-sass": "node-sass sass/style.scss css/style.comp.css",
     "concat-css": "concat -o css/style.concat.css  css/style.comp.css",
     "prefix-css": "postcss --use autoprefixer -b 'last 10 version' css/style.concat.css -o css/style.prefix.css",
@@ -25,18 +25,18 @@
   },
   "homepage": "https://github.com/saeed0920/start-css-modern-project#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.16",
     "concat": "^1.0.3",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^10.1.0",
-    "sass": "^1.64.2",
-    "tailwindcss": "^3.3.3"
+    "sass": "^1.69.5",
+    "tailwindcss": "^3.3.5"
   },
   "dependencies": {
     "@maptiler/geocoding-control": "^0.0.98",
-    "@material-tailwind/html": "^2.0.0",
-    "live-server": "^1.2.2",
-    "maplibre-gl": "^3.2.2",
+    "@material-tailwind/html": "^2.1.0",
+    "live-server": "^1.1.0",
+    "maplibre-gl": "^3.6.2",
     "update-json": "^1.0.1"
   }
 }
